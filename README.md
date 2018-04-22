@@ -5,7 +5,7 @@ static allocation destructor system similar to atexit() used for preventing tech
 
 For example, consider code that was like this:
 
-~~~{.c}
+```{.c}
 #include <stddef.h>
 int doThisCrazyThing(int a)
 {
@@ -29,14 +29,14 @@ int doThisCrazyThing(int a)
   
   return ret;
 }
-~~~
+```
 
 
 Now you decide that 64k table isn't crazy enough,
 and want a 16M table, well that will make a big
 exe and might have linker error, so you make it malloc() instead
 
-~~~{.c}
+```{.c}
 #include <stddef.h>
 int doThisCrazierThing(int a)
 {
@@ -63,7 +63,7 @@ int doThisCrazierThing(int a)
   
   return ret;
 }
-~~~
+```
 
 Great, but technically myTable is now a memory leak, although unless you are doing very advanced things,
 probably only a constant size memory leak for the lifetime of the program, not a growing one.
@@ -72,7 +72,7 @@ Still, best practice is to install an atexit() handler.
 
 But if you can't / don't want to use atexit(), then you will write a system like this.
 
-~~~{.c}
+```{.c}
 #include <stddef.h>
 #include "Special.StaticAllocDestructor-Public.h"
 int doThisCrazierThing(int a)
@@ -117,4 +117,4 @@ int main(int argc, char**argv)
   return returnCode;
 }
 
-~~~
+```
