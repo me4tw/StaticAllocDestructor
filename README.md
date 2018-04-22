@@ -121,3 +121,7 @@ int main(int argc, char**argv)
 }
 
 ```
+
+
+# static alloc destructors
+it includes 2 destructors, one for malloc and one for win32 heap_alloc which can be left out if not on windows, and/or you can add your own
